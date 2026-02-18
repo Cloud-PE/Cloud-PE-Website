@@ -89,9 +89,9 @@ const Home: React.FC = () => {
 
             {/* 主图 */}
             <div className="w-full max-w-4xl">
-              <Card className="relative flex flex-col gap-6 rounded-2xl bg-card bg-clip-padding py-6 text-card-foreground border border-border/50 shadow-xs shadow-primary/24 before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:shadow-[0_1px_--theme(--color-white/16%)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] overflow-hidden" style={{background: 'var(--main-photo-background)'}}>
+              <Card className="relative flex flex-col gap-6 rounded-2xl bg-card bg-clip-padding text-card-foreground border border-border/50 shadow-xs shadow-primary/24 before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:shadow-[0_1px_--theme(--color-white/16%)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] overflow-hidden" style={{background: 'var(--main-photo-background)'}}>
                 <ImageWithLoading
-                  src="https://pic1.imgdb.cn/item/6921c92c3203f7be0021a48e.png"
+                  src="https://pic1.imgdb.cn/item/698732ac07b0859037ce9c08.jpg"
                   alt="Cloud-PE 主图"
                   className="w-full"
                 />
