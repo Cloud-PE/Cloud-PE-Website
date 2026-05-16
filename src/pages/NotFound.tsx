@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Home, ArrowLeft } from 'lucide-react'
 
 const NotFound: React.FC = () => {
-  const [canGoBack, setCanGoBack] = useState(false)
-
-  useEffect(() => {
-    setCanGoBack(window.history.length > 1)
-  }, [])
+  // Read once at mount; no need to schedule an effect for a value that never changes.
+  const [canGoBack] = useState(() => typeof window !== 'undefined' && window.history.length > 1)
 
   return (
     <section className="flex-1 flex items-center justify-center py-16 md:py-24">

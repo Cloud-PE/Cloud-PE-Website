@@ -1,26 +1,33 @@
 {
-  "name": "cloud-pe",
+  "name": "cloud-pe-website",
   "version": "1.0.0",
-  "description": "built with React, TypeScript, Vite and Coss UI",
-  "author": "Your Name",
+  "description": "Cloud-PE 官方网站 —— 免费、纯净、强大、美观的 Win11 PE 维护工具",
   "license": "MIT",
   "private": true,
   "type": "module",
   "keywords": [
+    "cloud-pe",
+    "winpe",
+    "windows-pe",
     "react",
     "typescript",
-    "tailwindcss",
-    "coss-ui"
+    "vite",
+    "tailwindcss"
   ],
+  "homepage": "https://cloud-pe.cn",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/Cloud-PE/Cloud-PE-Website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cloud-PE/Cloud-PE-Website/issues"
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "preview": "vite preview",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "type-check": "tsc -b --noEmit"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
