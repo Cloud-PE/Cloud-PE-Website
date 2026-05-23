@@ -7,7 +7,6 @@ const Footer: React.FC = () => {
     { name: 'Cloud-PE 文件下载站', url: 'https://files.cloud-pe.cn' },
     { name: 'Cloud-PE Docs', url: 'https://docs.cloud-pe.cn' },
     { name: 'LetRecovery', url: 'https://sysre.cn' },
-    { name: 'LetWin', url: 'https://win.cloud-pe.cn' },
     { name: 'SysRE 云盘', url: 'https://pan.sysre.cn' },
     { name: 'Cloud-PE 服务监控页', url: 'https://status.cloud-pe.cn' },
 
