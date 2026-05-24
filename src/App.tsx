@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { Layout } from '@/components/layout'
 import { Home, Download, QQGroup, NotFound } from '@/pages'
@@ -25,7 +25,7 @@ const TitleUpdater: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <TitleUpdater />
         <Layout>
           <Routes>
@@ -35,7 +35,7 @@ const App: React.FC = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   )
 }
