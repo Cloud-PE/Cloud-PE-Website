@@ -24,13 +24,6 @@ const Header: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path
 
-  const cycleTheme = () => {
-    const themes: Array<'light' | 'dark' | 'system'> = ['light', 'dark', 'system']
-    const currentIndex = themes.indexOf(theme)
-    const nextIndex = (currentIndex + 1) % themes.length
-    setTheme(themes[nextIndex])
-  }
-
   const getThemeIcon = () => {
     if (theme === 'system') {
       return <CircleHalf className="h-[18px] w-[18px]" />
@@ -138,25 +131,56 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <div className="flex flex-1 items-center justify-end gap-2 md:hidden">
+          {/* Theme Toggle */}
+          <DropdownMenu>
+            <MenuTrigger
+              render={
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-lg button-header"
+                  aria-label="切换主题"
+                >
+                  {getThemeIcon()}
+                </Button>
+              }
+            />
+            <MenuPopup className="min-w-[140px] menu-popup-animated">
+              <MenuItem
+                onClick={() => setTheme('light')}
+                className="flex items-center gap-2"
+              >
+                <Sun className="h-4 w-4" />
+                浅色模式
+                {theme === 'light' && <Check className="ml-auto h-4 w-4" />}
+              </MenuItem>
+              <MenuItem
+                onClick={() => setTheme('dark')}
+                className="flex items-center gap-2"
+              >
+                <Moon className="h-4 w-4" />
+                深色模式
+                {theme === 'dark' && <Check className="ml-auto h-4 w-4" />}
+              </MenuItem>
+              <MenuItem
+                onClick={() => setTheme('system')}
+                className="flex items-center gap-2"
+              >
+                <CircleHalf className="h-4 w-4" />
+                跟随系统
+                {theme === 'system' && <Check className="ml-auto h-4 w-4" />}
+              </MenuItem>
+            </MenuPopup>
+          </DropdownMenu>
           <Button
             type="button"
-            variant="ghost"
-            size="icon"
-            onClick={cycleTheme}
-            aria-label="切换主题"
-            className="rounded-lg border-transparent shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 button-header"
-          >
-            {getThemeIcon()}
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
+            variant="outline"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="菜单"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
-            className="rounded-lg border-transparent shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 button-header"
+            className="rounded-lg button-header"
           >
             {mobileMenuOpen ? (
               <X className="h-5 w-5" />
