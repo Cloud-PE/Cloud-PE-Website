@@ -75,7 +75,7 @@ const DownloadPage: React.FC = () => {
                   <CardDescription>{item.description}</CardDescription>
                   {item.primary && (
                     <CardAction>
-                      <Badge>推荐</Badge>
+                      <Badge className="leading-none">推荐</Badge>
                     </CardAction>
                   )}
                 </CardHeader>
