@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { ImageOff } from 'lucide-react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ImageWithLoadingProps {
   src: string
@@ -23,28 +25,31 @@ const ImageWithLoading: React.FC<ImageWithLoadingProps> = ({
     setError(true)
   }
 
+  if (error) {
+    return (
+      <div
+        className={`flex min-h-[200px] flex-col items-center justify-center gap-2 rounded-lg bg-muted text-muted-foreground ${className}`}
+      >
+        <ImageOff className="h-8 w-8" />
+        <span className="text-sm">图片加载失败</span>
+      </div>
+    )
+  }
+
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${loading ? 'min-h-[200px]' : ''} ${className}`}>
       {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-muted">
-          <img src="/img/loading.svg" alt="加载中..." className="w-8 h-8" />
-        </div>
+        <Skeleton className="absolute inset-0 h-full w-full rounded-lg" />
       )}
-      {error ? (
-        <div className="flex items-center justify-center bg-muted h-full min-h-[200px]">
-          <img src="/img/loading.svg" alt="加载失败" className="w-8 h-8" />
-        </div>
-      ) : (
-        <img
-          src={src}
-          alt={alt}
-          className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
-            loading ? 'opacity-0' : 'opacity-100'
-          }`}
-          onLoad={handleLoad}
-          onError={handleError}
-        />
-      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
+          loading ? 'opacity-0' : 'opacity-100'
+        }`}
+        onLoad={handleLoad}
+        onError={handleError}
+      />
     </div>
   )
 }

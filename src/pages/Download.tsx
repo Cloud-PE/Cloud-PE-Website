@@ -1,9 +1,9 @@
 import React from 'react'
 import { Banner } from '@/components/layout'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Download as DownloadIcon, Package, Puzzle, Info, FileText } from 'lucide-react'
+import { Download as DownloadIcon, Package, Puzzle, Info, FileText, ArrowRight } from 'lucide-react'
 
 const DownloadPage: React.FC = () => {
 
@@ -11,24 +11,29 @@ const DownloadPage: React.FC = () => {
     {
       title: 'Cloud-PE 客户端',
       description: '推荐使用客户端制作启动盘，简单方便',
-      icon: <Package className="w-6 h-6" />,
+      icon: <Package className="w-5 h-5" />,
       url: 'https://p0.cloud-pe.cn/Cloud-PE%E6%96%87%E4%BB%B6/Cloud-PE%20One/Cloud-PE%20One.zip',
       primary: true,
+      cta: '下载',
+      ctaIcon: <DownloadIcon className="w-4 h-4 mr-2" />,
     },
     {
       title: 'Cloud-PE ISO',
       description: '纯净 ISO 文件，适合高级用户',
-      icon: <DownloadIcon className="w-6 h-6" />,
+      icon: <DownloadIcon className="w-5 h-5" />,
       url: 'https://p0.cloud-pe.cn/Cloud-PE%E6%96%87%E4%BB%B6/ISO%E6%96%87%E4%BB%B6/Cloud-PE.iso',
       primary: false,
+      cta: '下载',
+      ctaIcon: <DownloadIcon className="w-4 h-4 mr-2" />,
     },
     {
       title: 'CE-插件',
       description: '扩展功能插件，按需下载',
-      icon: <Puzzle className="w-6 h-6" />,
+      icon: <Puzzle className="w-5 h-5" />,
       url: 'https://files.cloud-pe.cn/%E4%B8%8B%E8%BD%BD/CE-%E6%8F%92%E4%BB%B6',
-      version: null,
       primary: false,
+      cta: '前往下载',
+      ctaIcon: <ArrowRight className="w-4 h-4 mr-2" />,
     },
   ]
 
@@ -56,23 +61,25 @@ const DownloadPage: React.FC = () => {
             {downloadItems.map((item) => (
               <Card
                 key={item.title}
-                className={`relative overflow-hidden ${
-                  item.primary ? 'border-primary/50 bg-primary/5' : 'border-border/50'
-                }`}
+                className={item.primary ? 'border-primary/50' : ''}
               >
-                {item.primary && (
-                  <Badge className="px-[calc(--spacing(2)-1px)] absolute top-0 right-0 rounded-none rounded-bl-lg border border-primary">推荐</Badge>
-                )}
-                <CardHeader className="text-center pb-2">
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mx-auto mb-4 ${
-                    item.primary ? 'bg-primary text-primary-foreground' : 'bg-muted text-foreground'
-                  }`}>
+                <CardHeader>
+                  <div
+                    className={`mb-2 inline-flex h-11 w-11 items-center justify-center rounded-xl ${
+                      item.primary ? 'bg-primary text-primary-foreground' : 'bg-muted text-foreground'
+                    }`}
+                  >
                     {item.icon}
                   </div>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                  <CardTitle>{item.title}</CardTitle>
                   <CardDescription>{item.description}</CardDescription>
+                  {item.primary && (
+                    <CardAction>
+                      <Badge>推荐</Badge>
+                    </CardAction>
+                  )}
                 </CardHeader>
-                <CardContent className="text-center space-y-4">
+                <CardFooter className="mt-auto">
                   <Button
                     className="w-full"
                     variant={item.primary ? 'default' : 'outline'}
@@ -84,10 +91,10 @@ const DownloadPage: React.FC = () => {
                       />
                     }
                   >
-                    <DownloadIcon className="w-4 h-4 mr-2" />
-                    下载
+                    {item.ctaIcon}
+                    {item.cta}
                   </Button>
-                </CardContent>
+                </CardFooter>
               </Card>
             ))}
           </div>

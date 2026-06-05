@@ -139,18 +139,24 @@ const Header: React.FC = () => {
         {/* Mobile Menu Button */}
         <div className="flex flex-1 items-center justify-end gap-2 md:hidden">
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             onClick={cycleTheme}
-            className="rounded-lg button-header"
+            aria-label="切换主题"
+            className="rounded-lg border-transparent shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 button-header"
           >
             {getThemeIcon()}
           </Button>
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-lg button-header"
+            aria-label="菜单"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            className="rounded-lg border-transparent shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 button-header"
           >
             {mobileMenuOpen ? (
               <X className="h-5 w-5" />
