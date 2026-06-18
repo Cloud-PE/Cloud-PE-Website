@@ -94,7 +94,7 @@ const Home: React.FC = () => {
                 style={{ background: 'var(--main-photo-background)' }}
               >
                 <ImageWithLoading
-                  src="https://pic1.imgdb.cn/item/698732ac07b0859037ce9c08.jpg"
+                  src="https://pic1.imgdb.cn/item/6a335754a6693733f7e20b8d.jpg"
                   alt="Cloud-PE 主图"
                   className="block w-full"
                 />
