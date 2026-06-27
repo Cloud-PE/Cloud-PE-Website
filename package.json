@@ -31,6 +31,12 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
+    "@shikijs/markdown-it": "^4.3.0",
+    "@shikijs/transformers": "^4.3.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.2.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-container": "^4.0.0",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
@@ -42,6 +48,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
+    "artplayer": "^5.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.561.0",
@@ -53,6 +60,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.10.3",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",

@@ -1,54 +1,68 @@
 import React, { useState } from 'react'
-import { ImageOff } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
+import { cn } from '@/lib/utils'
 
-interface ImageWithLoadingProps {
+interface ImageWithLoadingProps
+  extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
   src: string
   alt: string
+  /** classes applied to the <img> (size / shape) */
   className?: string
+  /** extra classes for the wrapper */
+  wrapperClassName?: string
+  /** rounding used by the skeleton / fallback, should match the image */
+  rounded?: string
+  /** min-height kept while loading, useful for fluid (w-full h-auto) images */
+  loadingMinHeight?: string
 }
 
 const ImageWithLoading: React.FC<ImageWithLoadingProps> = ({
   src,
   alt,
-  className = '',
+  className,
+  wrapperClassName,
+  rounded = 'rounded-lg',
+  loadingMinHeight,
+  ...rest
 }) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  const handleLoad = () => {
-    setLoading(false)
-  }
-
-  const handleError = () => {
-    setLoading(false)
-    setError(true)
-  }
-
   if (error) {
+    // 加载失败 → 显示灰色占位图（响应式，填满图片应占的宽度）
     return (
-      <div
-        className={`flex min-h-[200px] flex-col items-center justify-center gap-2 rounded-lg bg-muted text-muted-foreground ${className}`}
-      >
-        <ImageOff className="h-8 w-8" />
-        <span className="text-sm">图片加载失败</span>
+      <div className={cn('overflow-hidden', rounded, wrapperClassName)}>
+        <img
+          src="/img-placeholder.svg"
+          alt={alt}
+          className={cn('select-none', className)}
+        />
       </div>
     )
   }
 
   return (
-    <div className={`relative ${loading ? 'min-h-[200px]' : ''} ${className}`}>
+    <div
+      className={cn('relative', wrapperClassName)}
+      style={loading && loadingMinHeight ? { minHeight: loadingMinHeight } : undefined}
+    >
       {loading && (
-        <Skeleton className="absolute inset-0 h-full w-full rounded-lg" />
+        <Skeleton className={cn('absolute inset-0 h-full w-full', rounded)} />
       )}
       <img
         src={src}
         alt={alt}
-        className={`w-full h-auto rounded-lg transition-opacity duration-300 ${
-          loading ? 'opacity-0' : 'opacity-100'
-        }`}
-        onLoad={handleLoad}
-        onError={handleError}
+        onLoad={() => setLoading(false)}
+        onError={() => {
+          setLoading(false)
+          setError(true)
+        }}
+        className={cn(
+          'transition-opacity duration-300',
+          loading ? 'opacity-0' : 'opacity-100',
+          className,
+        )}
+        {...rest}
       />
     </div>
   )

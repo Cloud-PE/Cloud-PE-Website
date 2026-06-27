@@ -4,7 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/cloud-pe.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>主页 - Cloud-PE</title>
+    <title>Cloud-PE</title>
+    <meta name="description" content="免费、纯净、强大、美观的 Win11 PE 维护工具，支持系统维护与网络娱乐，可加载 CE-插件和 HotPE 模块。" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          var dark =
+            t === 'dark' ||
+            ((!t || t === 'system') &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches)
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

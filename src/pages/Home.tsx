@@ -1,178 +1,121 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, CardContent } from '@/components/ui/card'
+import { Download, Users, Shield, Rocket, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ImageWithLoading } from '@/components/common'
-import { Download, Users, Sparkles, Rocket, Shield } from 'lucide-react'
+import CloudPeAppPreview from '@/components/common/CloudPeAppPreview'
+import { FramedSection } from '@/components/layout'
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
+import { useT } from '@/lib/i18n'
+
+const featureIcons = [Shield, Rocket, Sparkles]
+
+const SHOTS = [
+  'https://pic1.imgdb.cn/item/6905c7333203f7be00bf5cee.png',
+  'https://pic1.imgdb.cn/item/6905c7323203f7be00bf5ce8.png',
+  'https://pic1.imgdb.cn/item/6869065258cb8da5c8914722.png',
+  'https://pic1.imgdb.cn/item/6869062858cb8da5c89146e2.png',
+]
 
 const Home: React.FC = () => {
-
-  const features = [
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: '免费纯净',
-      description: '完全免费｜无广告｜无劫持｜无后门｜清爽体验',
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: '强大兼容',
-      description: '丰富驱动支持｜超强兼容性｜插件扩展｜无限可能',
-    },
-    {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: '现代美学',
-      description: '简洁界面设计｜符合当代审美｜视觉舒适',
-    },
-  ]
-
-  const screenshots = [
-    {
-      url: 'https://pic1.imgdb.cn/item/6905c7333203f7be00bf5cee.png',
-      description: '初始资源占用情况，2GB内存也能完美使用。',
-    },
-    {
-      url: 'https://pic1.imgdb.cn/item/6905c7323203f7be00bf5ce8.png',
-      description:
-        'Cloud-插件市场搭配Cloud-小助手，完美支持获取、搜索、管理和加载CE-插件以及HotPE模块',
-    },
-    {
-      url: 'https://pic1.imgdb.cn/item/6869065258cb8da5c8914722.png',
-      description: '内置Chromium浏览器，支持绝大多数网站，占用低',
-    },
-    {
-      url: 'https://pic1.imgdb.cn/item/6869062858cb8da5c89146e2.png',
-      description: '支持全局暗黑',
-    },
-  ]
+  const t = useT()
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* 背景装饰 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-1/2 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl" />
-        </div>
-
-        <div className="relative container mx-auto px-4 py-20 md:py-32">
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-            {/* 主标题 */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              一款 <span className="gradient-highlight">实用的维护PE</span>
-            </h1>
-
-            {/* 副标题 */}
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
-              免费、纯净、强大、美观的 Win11 PE，支持系统维护和网络娱乐，支持加载 CE-插件和 HotPE 模块
-            </p>
-
-            {/* CTA 按钮 */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <Button
-                size="lg"
-                render={<Link to="/download" />}
-              >
-                <Download className="w-5 h-5 mr-2" />
-                立即下载
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                render={<Link to="/qqg" />}
-              >
-                <Users className="w-5 h-5 mr-2" />
-                加入社区
-              </Button>
+      {/* Hero */}
+      <section className="relative">
+        <div className="container py-12 md:py-16 lg:py-20">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-6 xl:gap-10">
+            {/* 左：文案 */}
+            <div className="flex flex-col items-start gap-6 text-left lg:w-[32%] lg:shrink-0">
+              <h1 className="font-heading text-4xl leading-[1.08] tracking-tight md:text-5xl lg:text-6xl">
+                {t.home.heroTitleLines[0]}
+                <br />
+                {t.home.heroTitleLines[1]}
+              </h1>
+              <p className="max-w-xl text-balance text-muted-foreground md:text-lg">
+                {t.home.heroDesc}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button size="lg" render={<Link to="/download" />}>
+                  <Download className="size-5" />
+                  {t.home.download}
+                </Button>
+                <Button variant="outline" size="lg" render={<Link to="/qqg" />}>
+                  <Users className="size-5" />
+                  {t.home.joinCommunity}
+                </Button>
+              </div>
             </div>
 
-            {/* 主图 */}
-            <div className="w-full max-w-4xl">
-              <Card
-                className="py-0 gap-0 overflow-hidden border-border/50 shadow-primary/24 before:shadow-[0_1px_--theme(--color-white/16%)]"
-                style={{ background: 'var(--main-photo-background)' }}
-              >
-                <ImageWithLoading
-                  src="https://pic1.imgdb.cn/item/6a335754a6693733f7e20b8d.jpg"
-                  alt="Cloud-PE 主图"
-                  className="block w-full"
-                />
-              </Card>
+            {/* 右：Cloud-PE One 界面预览（原生 coss ui，等比缩放，明暗随官网） */}
+            <div className="w-full lg:min-w-0 lg:flex-1">
+              <CloudPeAppPreview />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 特性介绍 */}
-      <section className="relative py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              为什么选择我们？
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              内置主流的无线网卡、有线网卡、触摸驱动、声卡驱动、磁盘驱动，拥有极高的兼容性
-            </p>
-          </div>
+      {/* 特性 */}
+      <FramedSection className="py-16 md:py-24">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
+          <h2 className="font-heading text-3xl tracking-tight md:text-4xl">
+            {t.home.featuresTitle}
+          </h2>
+          <p className="mt-3 text-muted-foreground md:text-lg">{t.home.featuresDesc}</p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {features.map((feature) => (
-              <Card
-                key={feature.title}
-                className="border-border/50"
-              >
-                <CardContent className="p-8 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-muted text-foreground mb-6">
-                    {feature.icon}
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {t.home.features.map((feature, i) => {
+            const Icon = featureIcons[i]
+            return (
+              <Card key={feature.title} className="gap-4 transition-colors hover:border-foreground/20">
+                <CardHeader>
+                  <div className="mb-1 flex size-10 items-center justify-center rounded-lg border bg-muted/40 text-foreground">
+                    <Icon className="size-5" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
+                  <CardTitle className="text-base">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="leading-relaxed">{feature.desc}</CardDescription>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+            )
+          })}
         </div>
-      </section>
+      </FramedSection>
 
-      {/* 截图展示 */}
-      <section className="relative py-20 md:py-28 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              系统截图
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
-              下图演示的仅为 Cloud-PE 的部分功能（包括 CE-插件，自带工具等），由于截图不定时更新，请以实际为准
-            </p>
-          </div>
+      {/* 截图 */}
+      <FramedSection className="py-16 md:py-24">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
+          <h2 className="font-heading text-3xl tracking-tight md:text-4xl">{t.home.shotsTitle}</h2>
+          <p className="mt-3 text-sm text-muted-foreground md:text-base">{t.home.shotsDesc}</p>
+        </div>
 
-          <div className="max-w-4xl mx-auto space-y-10">
-            {screenshots.map((screenshot, index) => (
-              <div key={index} className="space-y-3">
-                <div className="overflow-hidden rounded-lg border border-border/50">
-                  <ImageWithLoading
-                    src={screenshot.url}
-                    alt={screenshot.description}
-                    className="w-full"
-                  />
-                </div>
-                <p className="text-sm text-muted-foreground text-center" style={{ marginTop: '18px' }}>
-                  {screenshot.description}
-                </p>
+        <div className="mx-auto max-w-4xl space-y-10">
+          {SHOTS.map((url, i) => (
+            <figure key={url} className="space-y-3">
+              <div className="overflow-hidden rounded-xl border bg-clip-padding shadow-xs">
+                <ImageWithLoading
+                  src={url}
+                  alt={t.home.shots[i]}
+                  className="block w-full"
+                  wrapperClassName="w-full"
+                  rounded="rounded-none"
+                  loadingMinHeight="200px"
+                  loading="lazy"
+                />
               </div>
-            ))}
-          </div>
-
-          <p className="text-center text-foreground font-semibold mt-12 text-lg">
-            更多功能请自行探索
-          </p>
+              <figcaption className="text-center text-sm text-muted-foreground">
+                {t.home.shots[i]}
+              </figcaption>
+            </figure>
+          ))}
         </div>
-      </section>
+
+        <p className="mt-12 text-center font-heading text-lg text-foreground">
+          {t.home.moreToExplore}
+        </p>
+      </FramedSection>
     </>
   )
 }
