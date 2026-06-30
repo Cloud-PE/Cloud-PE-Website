@@ -10,10 +10,10 @@ import { useT } from '@/lib/i18n'
 const featureIcons = [Shield, Rocket, Sparkles]
 
 const SHOTS = [
-  'https://pic1.imgdb.cn/item/6905c7333203f7be00bf5cee.png',
-  'https://pic1.imgdb.cn/item/6905c7323203f7be00bf5ce8.png',
-  'https://pic1.imgdb.cn/item/6869065258cb8da5c8914722.png',
-  'https://pic1.imgdb.cn/item/6869062858cb8da5c89146e2.png',
+  'https://pic1.imgdb.cn/item/6a439c46514f59159c654e93.png',
+  'https://pic1.imgdb.cn/item/6a439c5a514f59159c654ea3.png',
+  'https://pic1.imgdb.cn/item/6a439b41514f59159c654dd5.png',
+  'https://pic1.imgdb.cn/item/6a439c18514f59159c654e68.png',
 ]
 
 const Home: React.FC = () => {

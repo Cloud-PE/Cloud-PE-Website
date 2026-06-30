@@ -12,6 +12,6 @@ Cloud-PE 是**非盈利性质**的软件：
 若阅读完整文档后仍未解决您的问题，欢迎加入我们的 QQ 群直接咨询开发者。
 
 ## 视频介绍
-Cloud-PE v1.4 体验视频：
+Cloud-PE v1.5 体验视频：
 
-<div data-player="video" data-qualities='[{"default":true,"html":"1080P","url":"https://p1.cloud-pe.cn/cloud-pe.mp4"},{"html":"720P","url":"https://p1.cloud-pe.cn/cloud-pe-720p.mp4"},{"html":"480P","url":"https://p1.cloud-pe.cn/cloud-pe-480p.mp4"}]' data-audio-tracks='[{"default":true,"html":"背景音乐","url":"https://p1.cloud-pe.cn/fghsGTssYg.mp3"}]' data-poster="https://pic1.imgdb.cn/item/6985bd36f8ef6591278d7401.png" data-title="Cloud-PE 体验视频"></div>
+<div data-player="video" data-qualities='[{"default":true,"html":"1080P","url":"https://p1.cloud-pe.cn/cloud-pe.mp4"},{"html":"720P","url":"https://p1.cloud-pe.cn/cloud-pe-720p.mp4"},{"html":"480P","url":"https://p1.cloud-pe.cn/cloud-pe-480p.mp4"}]' data-audio-tracks='[{"default":true,"html":"背景音乐","url":"https://p1.cloud-pe.cn/fghsGTssYg.mp3"}]' data-poster="https://pic1.imgdb.cn/item/6a4399d3514f59159c654cfd.png" data-title="Cloud-PE 体验视频"></div>
