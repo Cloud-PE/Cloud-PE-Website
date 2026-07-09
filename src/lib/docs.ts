@@ -48,7 +48,7 @@ interface MarkdownModule {
 // 侧边栏：中英文链接一致（语言无关），仅文字不同。
 export const sidebarZh: SidebarItem[] = [
   {
-    text: '开始使用',
+    text: '开始',
     items: [{ text: '写在前面', link: '/docs/start/start' }],
   },
   {
@@ -95,7 +95,7 @@ export const sidebarZh: SidebarItem[] = [
 
 export const sidebarEn: SidebarItem[] = [
   {
-    text: 'Start Using',
+    text: 'Getting Started',
     items: [{ text: 'Introduction', link: '/docs/start/start' }],
   },
   {
